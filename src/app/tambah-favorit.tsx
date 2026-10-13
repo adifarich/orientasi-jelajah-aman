@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/app/tambah-favorit.tsx
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Text, View } from "react-native";
@@ -28,3 +29,17 @@ export default function ModalTambahFavorit() {
     </View>
   );
 }
+=======
+// app/tambah-favorit.tsx 
+import { router } from "expo-router";
+import { Button, Text, View } from "react-native";
+
+export default function ModalTambahFavorit() {
+    return (
+        <View style={{ padding: 16 }}>
+            <Text>Tambahkan kota ini ke daftar favorit?</Text>
+            <Button title="Simpan" onPress={() => router.back()} />
+        </View>
+    );
+} 
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e

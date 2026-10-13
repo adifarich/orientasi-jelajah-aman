@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/app/(tabs)/index.tsx
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -10,6 +11,17 @@ import {
   Text,
   TouchableOpacity,
   View
+=======
+<<<<<<< HEAD
+// src/app/(tabs)/index.tsx
+import { useEffect, useRef, useState } from "react";
+import {
+  ActivityIndicator,
+  Button,
+  Text,
+  TouchableOpacity,
+  View,
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AtribusiCuaca from "../../components/AtribusiCuaca";
@@ -19,15 +31,21 @@ import { labelKodeCuaca } from "../../constants/weatherCodes";
 import { useDebounce } from "../../hooks/use-debounce";
 import { ambilKualitasUdara } from "../../services/airQualityService";
 import { cariKota } from "../../services/geocodingService";
+<<<<<<< HEAD
 import {
   ambilKoordinatSaatIni,
   mintaIzinLokasi,
 } from "../../services/locationService";
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
 import { konversiTingkatAQI } from "../../services/weatherAdapter";
 import { ambilCuaca } from "../../services/weatherService";
 import { HasilGeocoding } from "../../types/geocoding";
 import { DataCuacaLengkap, DataKualitasUdara } from "../../types/weather";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
 export default function HalamanUtama() {
   const [teksCari, setTeksCari] = useState("");
   const [hasilPencarian, setHasilPencarian] = useState<HasilGeocoding[]>([]);
@@ -38,6 +56,7 @@ export default function HalamanUtama() {
   );
   const [sedangMemuat, setSedangMemuat] = useState(false);
   const [pesanError, setPesanError] = useState<string | null>(null);
+<<<<<<< HEAD
   const [pesanLokasi, setPesanLokasi] = useState<string | null>(null);
 
   const teksTertunda = useDebounce(teksCari, 500);
@@ -61,6 +80,10 @@ useFocusEffect(
   }, [muatIdFavorit])
 );
 
+=======
+  const teksTertunda = useDebounce(teksCari, 500);
+  const requestIdRef = useRef(0); // pencegah race condition
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
   useEffect(() => {
     if (teksTertunda.trim().length === 0) {
       setHasilPencarian([]);
@@ -70,22 +93,34 @@ useFocusEffect(
       .then(setHasilPencarian)
       .catch(() => setHasilPencarian([]));
   }, [teksTertunda]);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
   async function pilihKota(kota: HasilGeocoding) {
     setKotaTerpilih(kota);
     const idSaatIni = ++requestIdRef.current;
     setSedangMemuat(true);
     setPesanError(null);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
     try {
       const [dataCuaca, dataAQI] = await Promise.all([
         ambilCuaca(kota.latitude, kota.longitude),
         ambilKualitasUdara(kota.latitude, kota.longitude),
       ]);
+<<<<<<< HEAD
 
       if (idSaatIni !== requestIdRef.current) return; // hasil basi, abaikan
 
       setCuaca(dataCuaca);
+=======
+      if (idSaatIni !== requestIdRef.current) return; // hasil basi, abaikan
+      setCuaca(dataCuaca);
+
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       setKualitasUdara(dataAQI);
     } catch (err) {
       if (idSaatIni !== requestIdRef.current) return;
@@ -94,6 +129,7 @@ useFocusEffect(
       if (idSaatIni === requestIdRef.current) setSedangMemuat(false);
     }
   }
+<<<<<<< HEAD
 
   async function gunakanLokasiSaatIni() {
     const status = await mintaIzinLokasi();
@@ -128,14 +164,23 @@ useFocusEffect(
       <Button title="Gunakan Lokasi Saat Ini" onPress={gunakanLokasiSaatIni} />
       {pesanLokasi && <Text>{pesanLokasi}</Text>}
 
+=======
+  return (
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 16 }}>
+      <SearchBox onCari={setTeksCari} />
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       {hasilPencarian.map((kota) => (
         <TouchableOpacity key={kota.id} onPress={() => pilihKota(kota)}>
           <Text>{kota.name}</Text>
         </TouchableOpacity>
       ))}
+<<<<<<< HEAD
 
       {sedangMemuat && <ActivityIndicator />}
 
+=======
+      {sedangMemuat && <ActivityIndicator />}
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       {pesanError && (
         <View>
           <Text>{pesanError}</Text>
@@ -145,6 +190,7 @@ useFocusEffect(
           />
         </View>
       )}
+<<<<<<< HEAD
 
     
       {cuaca && kualitasUdara && kotaTerpilih && !sedangMemuat && (
@@ -172,6 +218,15 @@ useFocusEffect(
             />
           )}
         </>
+=======
+      {cuaca && kualitasUdara && kotaTerpilih && !sedangMemuat && (
+        <WeatherCard
+          kota={kotaTerpilih.name}
+          suhu={cuaca.saatIni.suhu}
+          tingkatAQI={konversiTingkatAQI(kualitasUdara.indeksAQI)}
+          indeksAQI={kualitasUdara.indeksAQI}
+        />
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       )}
 
       {cuaca && (
@@ -191,6 +246,10 @@ useFocusEffect(
           {cuaca.saatIni.kecepatanAngin} km/j
         </Text>
       )}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       {cuaca && kualitasUdara && (
         <View>
           <Text style={{ fontSize: 12, color: "#888" }}>
@@ -201,7 +260,86 @@ useFocusEffect(
           </Text>
         </View>
       )}
+<<<<<<< HEAD
+=======
+
+      <AtribusiCuaca />
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       <AtribusiCuaca />
     </SafeAreaView>
   );
 }
+<<<<<<< HEAD
+=======
+=======
+// src/app/(tabs)/index.tsx 
+import { useEffect, useState } from "react";
+import { ActivityIndicator, Button, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import SearchBox from "../../components/SearchBox";
+import WeatherCard from "../../components/WeatherCard";
+import { useDebounce } from "../../hooks/use-debounce";
+import { cariKota } from "../../services/geocodingService";
+import { HasilGeocoding } from "../../types/geocoding";
+
+export default function HalamanUtama() {
+  const [teksCari, setTeksCari] = useState("");
+  const [hasil, setHasil] = useState<HasilGeocoding[]>([]);
+  const [sedangMemuat, setSedangMemuat] = useState(false);
+  const [pesanError, setPesanError] = useState<string | null>(null);
+
+  const teksTertunda = useDebounce(teksCari, 500);
+
+  useEffect(() => {
+    if (teksTertunda.trim().length === 0) {
+      setHasil([]);
+      setPesanError(null);
+      return;
+    }
+    ambilData(teksTertunda);
+  }, [teksTertunda]);
+
+  async function ambilData(nama: string) {
+    setSedangMemuat(true);
+    setPesanError(null);
+    try {
+      const data = await cariKota(nama);
+      setHasil(data);
+    } catch (err) {
+      setPesanError("Gagal mengambil data. Periksa koneksi internet Anda.");
+    } finally {
+      setSedangMemuat(false);
+    }
+  }
+
+  return (
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 16 }}>
+      <SearchBox onCari={setTeksCari} />
+
+      {sedangMemuat && <ActivityIndicator />}
+
+      {pesanError && (
+        <View>
+          <Text accessibilityLabel={pesanError}>{pesanError}</Text>
+          <Button title="Coba Lagi" onPress={() => ambilData(teksTertunda)} />
+        </View>
+      )}
+
+      {!sedangMemuat && !pesanError && teksTertunda.length > 0 && hasil.length === 0
+        && (
+          <Text accessibilityLabel="Kota tidak ditemukan">Kota tidak ditemukan</Text>
+        )}
+
+      {!sedangMemuat && !pesanError && hasil.length > 0 && (
+         <Text accessibilityLabel="Ditemukan">Ditemukan {hasil.length} kota</Text>
+      )}
+        
+      {hasil.map((kota) => (
+        <WeatherCard key={kota.id} kota={kota.name} suhu={29} tingkatAQI="BAIK" />
+      ))}
+    </SafeAreaView>
+  );
+}
+>>>>>>> e6d0380787c8f0df51f1fe1fcde67dc3409e6936
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
@@ -80,4 +81,18 @@ export default function TabRiwayat() {
       ))}
     </SafeAreaView>
   );
+=======
+// app/(tabs)/riwayat.tsx (ganti <View> terluar menjadi <SafeAreaView>) 
+import { SafeAreaView } from "react-native-safe-area-context";
+import RiwayatList from "../../components/RiwayatList";
+
+export default function TabRiwayat() {
+    const daftarKota = ["Pekalongan", "Jakarta", "Semarang"]; // data contoh sementara 
+
+    return (
+        <SafeAreaView style={{ flex: 1, padding: 16 }}>
+            <RiwayatList daftarKota={daftarKota} />
+        </SafeAreaView>
+    );
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
 }

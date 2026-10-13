@@ -32,12 +32,15 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
+<<<<<<< HEAD
       ],
       [
         "expo-location",
         {
           "locationWhenInUsePermission": "Jelajah Aman menggunakan lokasi Anda untuk menampilkan cuaca di kota terdekat."
         }
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
       ]
     ],
     "experiments": {

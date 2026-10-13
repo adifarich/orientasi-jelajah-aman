@@ -1,9 +1,14 @@
 // src/services/weatherService.ts
 import { DataCuacaLengkap } from "../types/weather";
+<<<<<<< HEAD
 
 const BASE_URL = "https://api.open-meteo.com/v1/forecast";
 const BATAS_WAKTU_MS = 3000;
 
+=======
+const BASE_URL = "https://api.open-meteo.com/v1/forecast";
+const BATAS_WAKTU_MS = 3000;
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
 export async function ambilCuaca(
   latitude: number,
   longitude: number,
@@ -12,16 +17,24 @@ export async function ambilCuaca(
     `${BASE_URL}?latitude=${latitude}&longitude=${longitude}` +
     `&current=temperature_2m,weather_code,wind_speed_10m` +
     `&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto`;
+<<<<<<< HEAD
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), BATAS_WAKTU_MS);
 
+=======
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), BATAS_WAKTU_MS);
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
   try {
     const response = await fetch(url, { signal: controller.signal });
     if (!response.ok) {
       throw new Error(`Gagal memuat cuaca (status ${response.status})`);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8537c32bf4424fc388a04a4a4821f5a83416610e
     const data = await response.json();
     return {
       saatIni: {
