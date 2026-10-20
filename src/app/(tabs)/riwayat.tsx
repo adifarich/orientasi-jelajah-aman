@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { Alert, Button, ScrollView, TouchableOpacity, View } from "react-native";
 import Teks from "../../components/Teks";
+=======
+
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
+import { Alert, Button, Text, View } from "react-native";
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
   ambilSemuaFavorit,
   hapusFavorit,
 } from "../../services/favoritStorage";
+<<<<<<< HEAD
 import {
   ambilRiwayat,
   kosongkanRiwayat,
@@ -28,6 +36,16 @@ export default function TabRiwayat() {
         .then(setDaftarFavorit)
         .catch(() => {});
       ambilRiwayat().then(setRiwayat);
+=======
+import { KotaFavorit } from "../../types/favorit";
+
+export default function TabRiwayat() {
+  const [daftarFavorit, setDaftarFavorit] = useState<KotaFavorit[]>([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      ambilSemuaFavorit().then(setDaftarFavorit);
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
     }, []),
   );
 
@@ -38,6 +56,7 @@ export default function TabRiwayat() {
 
   // Tambahan latihan mandiri: konfirmasi sebelum menghapus
   function konfirmasiHapus(kota: KotaFavorit) {
+<<<<<<< HEAD
     konfirmasi(
       "Konfirmasi Hapus",
       `Apakah kamu yakin ingin menghapus ${kota.nama}?`,
@@ -127,3 +146,60 @@ export default function TabRiwayat() {
     </SafeAreaView>
   );
 }
+=======
+    Alert.alert(
+      "Konfirmasi Hapus",
+      `Apakah kamu yakin ingin menghapus ${kota.nama}?`,
+      [
+        {
+          text: "Batal",
+          style: "cancel",
+        },
+        {
+          text: "Hapus",
+          style: "destructive",
+          onPress: () => {
+            hapus(kota.id).catch(() => {
+              Alert.alert("Error", "Gagal menghapus kota favorit.");
+            });
+          },
+        },
+      ],
+    );
+  }
+
+  return (
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 12 }}>
+      <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+        Kota Favorit
+      </Text>
+
+      {/* Tambahan latihan mandiri: jumlah kota favorit */}
+      <Text>Tersimpan {daftarFavorit.length} kota</Text>
+
+      {daftarFavorit.length === 0 && (
+        <Text>Belum ada kota favorit</Text>
+      )}
+
+      {daftarFavorit.map((kota) => (
+        <View
+          key={kota.id}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text>{kota.nama}</Text>
+
+          {/* Tombol sekarang meminta konfirmasi dahulu */}
+          <Button
+            title="Hapus"
+            onPress={() => konfirmasiHapus(kota)}
+          />
+        </View>
+      ))}
+    </SafeAreaView>
+  );
+}
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea

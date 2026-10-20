@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/app/(tabs)/_layout.tsx
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
@@ -81,3 +82,21 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+=======
+// app/(tabs)/_layout.tsx
+
+
+import { Tabs } from "expo-router";
+
+export default function TabLayout() {
+    return (
+        <Tabs screenOptions={{ headerShown: true }}>
+            <Tabs.Screen name="index" options={{ title: "Beranda" }} />
+            <Tabs.Screen name="riwayat" options={{ title: "Riwayat" }} />
+            <Tabs.Screen name="pengaturan" options={{ title: "Pengaturan" }} />
+            <Tabs.Screen name="tentang" options={{ title: "Tentang" }} /> 
+        </Tabs>
+
+    );
+} 
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea

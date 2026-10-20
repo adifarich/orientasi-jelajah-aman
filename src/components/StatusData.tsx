@@ -1,6 +1,9 @@
 // src/components/StatusData.tsx
 import { View, Text } from "react-native";
+<<<<<<< HEAD
 import { useTema } from "../context/TemaContext";
+=======
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
 import { SumberData } from "../types/cache";
 
 interface StatusDataProps {
@@ -24,7 +27,10 @@ function labelSumber(sumber: SumberData): string {
 }
 
 export default function StatusData({ sumber, disimpanPada }: StatusDataProps) {
+<<<<<<< HEAD
   const { warna } = useTema();
+=======
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
   const basi = sumber === "cache-basi";
   const label = labelSumber(sumber);
   const umur = formatUmur(disimpanPada);
@@ -36,11 +42,19 @@ export default function StatusData({ sumber, disimpanPada }: StatusDataProps) {
       style={{
         padding: 8,
         borderRadius: 8,
+<<<<<<< HEAD
         backgroundColor: basi ? warna.basiLatar : warna.segarLatar,
       }}
     >
       <Text style={{ fontSize: 12, color: basi ? warna.basiTeks : warna.segarTeks }}>{label}</Text>
       <Text style={{ fontSize: 11, color: warna.teksPudar }}>Diperbarui {umur}</Text>
+=======
+        backgroundColor: basi ? "#FEF3E2" : "#EAFBF6",
+      }}
+    >
+      <Text style={{ fontSize: 12, color: basi ? "#B45309" : "#13795F" }}>{label}</Text>
+      <Text style={{ fontSize: 11, color: "#666666" }}>Diperbarui {umur}</Text>
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
     </View>
   );
 }

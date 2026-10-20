@@ -1,8 +1,15 @@
 // src/services/cuacaRepository.ts
+<<<<<<< HEAD
 import { ambilCuaca } from "./weatherService";
 import { ambilKualitasUdara } from "./airQualityService";
 import { ambilCache, simpanCache } from "./cacheRepository";
 import { HasilCuacaOffline, KotaUntukCache } from "../types/cache";
+=======
+import { HasilCuacaOffline, KotaUntukCache } from "../types/cache";
+import { ambilKualitasUdara } from "./airQualityService";
+import { ambilCache, simpanCache } from "./cacheRepository";
+import { ambilCuaca } from "./weatherService";
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
 
 export const TTL_SEGAR_MS = 30 * 60 * 1000; // 30 menit
 export const BATAS_CACHE_MS = 7 * 24 * 60 * 60 * 1000; // 7 hari
@@ -13,7 +20,11 @@ interface OpsiAmbil {
 
 export async function ambilCuacaOfflineFirst(
   kota: KotaUntukCache,
+<<<<<<< HEAD
   opsi: OpsiAmbil = {}
+=======
+  opsi: OpsiAmbil = {},
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
 ): Promise<HasilCuacaOffline> {
   // Jika SQLite bermasalah, tetap lanjut ke internet (jangan langsung gagal)
   const cache = await ambilCache(kota.latitude, kota.longitude).catch((err) => {

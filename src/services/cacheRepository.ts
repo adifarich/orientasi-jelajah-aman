@@ -96,9 +96,12 @@ export async function hapusSemuaCache(): Promise<void> {
   const db = await ambilDatabase();
   await db.runAsync("DELETE FROM cache_cuaca");
 }
+<<<<<<< HEAD
 
 // Invalidation per kota: hapus cache satu lokasi saja (berdasarkan kunci)
 export async function hapusCacheKota(kunci: string): Promise<void> {
   const db = await ambilDatabase();
   await db.runAsync("DELETE FROM cache_cuaca WHERE kunci = ?", [kunci]);
 }
+=======
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea

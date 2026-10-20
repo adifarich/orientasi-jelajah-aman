@@ -1,5 +1,6 @@
 // src/app/(tabs)/pengaturan.tsx
 import { useState } from "react";
+<<<<<<< HEAD
 import { Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Teks from "../../components/Teks";
@@ -15,6 +16,14 @@ const OPSI_TEMA: { nilai: PilihanTema; label: string }[] = [
 export default function TabPengaturan() {
   const [pesan, setPesan] = useState<string | null>(null);
   const { pilihan, warna, ubahTema } = useTema();
+=======
+import { Text, Button } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { hapusSemuaCache } from "../../services/cacheRepository";
+
+export default function TabPengaturan() {
+  const [pesan, setPesan] = useState<string | null>(null);
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
 
   async function hapusDataTersimpan() {
     try {
@@ -26,6 +35,7 @@ export default function TabPengaturan() {
   }
 
   return (
+<<<<<<< HEAD
     <SafeAreaView
       style={{ flex: 1, padding: 16, gap: 12, backgroundColor: warna.latar }}
     >
@@ -65,6 +75,13 @@ export default function TabPengaturan() {
       </Teks>
       <Button title="Hapus Data Cuaca Tersimpan" onPress={hapusDataTersimpan} />
       {pesan && <Teks accessibilityLabel={pesan}>{pesan}</Teks>}
+=======
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 12 }}>
+      <Text style={{ fontSize: 18, fontWeight: "bold" }}>Jelajah Aman</Text>
+      <Text>Versi 1.0.0</Text>
+      <Button title="Hapus Data Cuaca Tersimpan" onPress={hapusDataTersimpan} />
+      {pesan && <Text accessibilityLabel={pesan}>{pesan}</Text>}
+>>>>>>> d0e104160e8fe0dd197f30fd23868c53ec8303ea
     </SafeAreaView>
   );
 }
