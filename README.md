@@ -2,9 +2,7 @@
 
 Aplikasi cuaca dan kualitas udara berbasis Expo (React Native + TypeScript) yang bisa dipakai juga saat offline berkat cache SQLite.
 
-## Status Data: cache-segar, cache-basi, dan first-run offline
-
-**Cache-segar** berarti data tersimpan di perangkat berumur kurang dari 30 menit (TTL), sehingga aplikasi langsung memakainya tanpa memanggil internet. **Cache-basi** berarti umur data sudah 30 menit atau lebih dan internet gagal dijangkau, sehingga aplikasi tetap menampilkan data lama itu dengan label oranye "Mode offline - data tersimpan mungkin sudah usang". **First-run offline** berarti belum ada cache sama sekali dan internet juga tidak ada, sehingga tidak ada data yang bisa ditampilkan dan pengguna hanya melihat pesan error beserta tombol "Coba Lagi". Label status ini penting karena pengguna berhak tahu apakah angka suhu dan kualitas udara yang dilihat itu baru dari internet atau salinan lama, supaya tidak salah mengambil keputusan (misalnya soal udara yang tidak sehat) berdasarkan data yang sudah usang.
+Jelajah Aman adalah aplikasi cuaca dan kualitas udara berbasis Expo, React Native, dan TypeScript yang menggunakan SQLite untuk menyimpan data agar tetap bisa diakses saat offline. Data yang tersimpan kurang dari 30 menit dianggap masih segar, sedangkan data berusia 30 menit atau lebih ditandai sebagai data lama jika internet tidak tersedia. Jika aplikasi dibuka tanpa internet dan belum memiliki data tersimpan, aplikasi menampilkan pesan kesalahan serta tombol Coba Lagi. Status ini membantu pengguna mengetahui kebaruan informasi sebelum menggunakannya sebagai pertimbangan aktivitas sehari-hari.
 
 ---
 
